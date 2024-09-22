@@ -8,3 +8,6 @@ I created this script in order to encode payloads via ROT or XOR. The course mat
 ```
 encode_payload.py -t / --type <vb or csharp) -b / --bytes <ROT or XOR value> -o / --output <outfile> -e / --encryption <rot or xor> input file
 ```
+
+The code is not done yet. C# is not implemented yet and I can optimise the code. But for now, the VisualBasic works great and includes a decryption algorithm as well for ease of use, so you can copy/paste it straight into the your macro.
+
