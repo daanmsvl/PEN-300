@@ -9,5 +9,13 @@ I created this script in order to encode payloads via ROT or XOR. The course mat
 encode_payload.py -t / --type <vb or csharp) -b / --bytes <ROT or XOR value> -o / --output <outfile> -e / --encryption <rot or xor> input file
 ```
 
-The code is not done yet. C# is not implemented yet and I can optimise the code. But for now, the VisualBasic works great and includes a decryption algorithm as well for ease of use, so you can copy/paste it straight into the your macro.
+The code is not done yet. For C# only the XOR-encoding has been created and I'm sure the code can be optimised. But for now, the VisualBasic works great and includes a decryption algorithm as well for ease of use, so you can copy/paste it straight into the your macro. The XOR on C# works great as well and incldues a decryption routine. 
+
+### Example: XOR C-Sharp payload
+```
+$ python3 ./encode_payload.py -t csharp -b 170 -o rev-serviio-xor.cs -e xor rev-serviio.cs
+[-] CSharp mode
+[-] Converting rev-serviio.cs to rev-serviio-xor.cs, XOR-ring with 0xAA.
+[+] Conversion done. Payload size: 789 bytes.
+```
 
