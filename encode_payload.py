@@ -5,9 +5,6 @@ def throw_error(message):
     print (f"Error: {message}\nQUITTING!")
     exit(1)
 
-def process_vba_xor(args):
-    return
-
 def process_vba(args):
     print (f"[-] Visual Basic mode")
     filename = args.filename
@@ -77,14 +74,7 @@ def process_vba(args):
 
     return
 
-def process_csharp_rot(args):
-    filename = args.filename
-    outfile = args.output
-    rotation = args.rotation
-    throw_error("Sorry, not implemented yet")
-    return
-
-def process_csharp_xor(args):
+def process_csharp(args):
     print (f"[-] CSharp mode")
     filename = args.filename
     outfile = args.output
@@ -155,11 +145,7 @@ def process_csharp_xor(args):
         print (f"[+] Conversion done. Payload size: {written} bytes.")
     except (OSError, IOError) as e:
         throw_error(e)
-
     return
-
-
-
 
 def main():
     parser = argparse.ArgumentParser(prog='encode_rot.py', 
@@ -172,25 +158,22 @@ def main():
     parser.add_argument('-e', '--encryption', required=True, help='Specifies encryption scheme. Choices are: xor, rot')
     args = parser.parse_args()
 
-    ftype = args.type
-    enctype = args.encryption
+    ftype = args.type.lower()
+    enctype = args.encryption.lower()
 
-    if enctype == 'rot':
-        if (ftype == 'vb'):
-            process_vba(args)
-        elif (ftype == 'csharp'):
-            process_csharp_rot(args)
-        else:
-            throw_error ("Unknown file type specified. Options are: vb, csharp")
-    elif enctype == 'xor':
-        if (ftype == 'vb'):
-            process_vba(args)
-        elif (ftype == 'csharp'):
-            process_csharp_xor(args)
-        else:
-            throw_error ('Unknown file type specified. Options are: vb, csharp')
-    else:
+    if ((ftype != 'vb') and (ftype != 'csharp')):
+        throw_error ("Unknown file type specified. Options are: vb, csharp. You specified " + ftype)
+
+    if ((enctype != 'xor') and (enctype != 'rot')):
         throw_error ("Unknown encryption scheme. Options are: rot, xor")
+
+    if ftype == 'vb':
+        process_vba(args)
+    elif ftype == 'csharp':
+        process_csharp(args)
+    else:
+        throw_error ("How did you get here?\nUnknown file type specified. Options are: vb, csharp")
+
 
     return
 
