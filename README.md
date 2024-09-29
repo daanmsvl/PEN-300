@@ -4,6 +4,7 @@ Upon preparing for my PEN-300 exams, I created different scripts to help me out.
 
 * encode_payload.py     - encode a c# or vb payload with ROT or XOR
 * rot_obfuscate.py      - simple script to obfuscate a powershell payload
+* amsi.ps1		- AMSI bypass script
 
 ## encode_payload.py
 I created this script in order to encode payloads via ROT or XOR. The course material directs you to use the `helper` app created using C#, but I found a Python script much, much easier. Usage:
